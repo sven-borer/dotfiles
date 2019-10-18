@@ -14,8 +14,9 @@ RESET=$'\[\e[0m\]'
 export EDITOR=vim
 export PAGER=less
 export HISTCONTROL=ignoreboth:erasedups
-export HISTFILESIZE=10000
-export PROMPT_COMMAND='history -a;history -r'
+export HISTSIZE=10000
+export HISTFILESIZE=20000
+export PROMPT_COMMAND='history -w; history -a'
 
 shopt -s histappend
 
@@ -52,6 +53,10 @@ extract () {
    fi
 }
 
+showGitBranch() {
+    git status 2> /dev/null | head -1 | awk '{ print $3 }'
+}
+
 CHAR='>'
 
-export PS1="${GREY}\t ${GREEN}\u${GREY}@${GREEN}\h ${RED}\w${RESET}\n ${CHAR} "
+export PS1="${GREY}\t ${GREEN}\u${GREY}@${GREEN}\h ${RED}\w ${BLUE}\$(showGitBranch)${RESET}\n ${CHAR} "
