@@ -20,18 +20,6 @@ export PROMPT_COMMAND='history -w; history -a'
 
 shopt -s histappend
 
-getYoutubePlaylists () {
-    input="$HOME/usbdrive/youtube/to_download.txt"
-    archive="$HOME/usbdrive/youtube/downloaded.txt"
-
-    while IFS=, read -r col1 col2 col3
-    do
-        outputDir="$HOME/usbdrive/youtube/$col1/%(uploader)s/%(playlist)s/%(title)s_%(id)s.%(ext)s"
-        [ $col2 == "audio" ] && binary="youtube-dl -x --audio-format vorbis" || binary="youtube-dl -f best"
-        $binary --download-archive "$archive" -o "$outputDir" -i "$col3"
-    done < $input
-}
-
 extract () {
    if [ -f $1 ] ; then
        case $1 in
