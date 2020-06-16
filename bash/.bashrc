@@ -48,5 +48,3 @@ showGitBranch() {
 CHAR='>'
 
 export PS1="${GREY}\t ${GREEN}\u${GREY}@${GREEN}\h ${RED}\w ${BLUE}\$(showGitBranch)${RESET}\n ${CHAR} "
-
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
