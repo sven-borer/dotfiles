@@ -168,8 +168,7 @@ bar {
 
 # OTHER KEYBINDINGS {{{
 bindsym $mod+l  		exec betterlockscreen -l dim 
-bindsym $mod+c  		exec firefox-developer-edition 
-bindsym $mod+Shift+w  		exec feh --bg-fill $(ls -d ~/.local/share/wallpapers/* | shuf | tail -1)
+bindsym $mod+Shift+w  	exec feh --bg-fill $(ls -d ~/.local/share/wallpapers/* | shuf | tail -1)
 bindsym Print   		exec scrot '%Y-%m-%d-%H-%M-%S_$wx$h_scrot.png' -e 'mv $f ~/pictures/screenshots/'
 bindsym XF86Search		exec --no-startup-id "rofi -show drun -theme slate"
 # }}}
@@ -182,7 +181,7 @@ bindsym XF86MonBrightnessDown   exec light -U 5
 # AUDIO CONTROLS {{{{
 bindsym XF86AudioRaiseVolume    exec pactl set-sink-volume $(pactl info | grep -i sink | cut -d' ' -f 3) +5% 
 bindsym XF86AudioLowerVolume    exec pactl set-sink-volume $(pactl info | grep -i sink | cut -d' ' -f 3) -5% 
-bindsym XF86AudioMute           exec pactl set-sink-mute $(echo $(pactl list short | grep -i running | awk '{ print $1 }')) toggle
+bindsym XF86AudioMute           exec pactl set-sink-mute 0 toggle
 # }}}
 
 # AUTOSTART {{{
