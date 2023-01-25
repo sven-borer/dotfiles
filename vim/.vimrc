@@ -20,6 +20,8 @@ set ruler
 syntax on
 
 " Color Scheme
+set termguicolors
+colorscheme catppuccin_mocha
 
 " Turn off modelines
 set modelines=0
@@ -108,3 +110,10 @@ set smartcase
 " Store info from no more than 100 files at a time, 9999 lines of text
 " 100kb of data. Useful for copying large amounts of data between files.
 set viminfo='100,<9999,s100
+
+call plug#begin()
+ Plug 'itchyny/lightline.vim'
+ Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+call plug#end()
+
+let g:lightline = {'colorscheme': 'catppuccin_mocha'}

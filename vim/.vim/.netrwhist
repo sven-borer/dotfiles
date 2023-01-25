@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =3
-let g:netrw_dirhist_3='/home/sven/devopswithdocker/1/1.11/backend-example-docker'
-let g:netrw_dirhist_2='/home/sven/devopswithdocker/1/1.8/logs.txt'
-let g:netrw_dirhist_1='/home/sven/my_projects/podcast-downloader'
