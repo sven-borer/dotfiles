@@ -2,8 +2,6 @@
 
 [[ $- != *i* ]] && return
 
-. ~/.bash_aliases
-
 BLUE=$'\[\e[34m\]'
 RED=$'\[\e[31m\]'
 YELLOW=$'\[\e[33m\]'
@@ -14,9 +12,29 @@ RESET=$'\[\e[0m\]'
 export EDITOR=vim
 export PAGER=less
 export HISTCONTROL=ignoreboth:erasedups
-export HISTSIZE=10000
-export HISTFILESIZE=20000
-export PROMPT_COMMAND='history -w; history -a'
+export HISTSIZE=100000
+export HISTFILESIZE=200000
+
+alias ls='ls --color=auto'
+alias ll='ls -la'
+
+eval "$(thefuck --alias)"
+
+# append to the history file rather than overwrite it
+shopt -s histappend
+
+HISTSIZE=9999999
+HISTFILESIZE=9999999
+
+# Store and reload the history immediately
+PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}; history -a; history -c; history -r;"'
+
+# use one command per line
+shopt -s cmdhist
+
+HISTTIMEFORMAT="%h %d %H:%M:%S "
+HISTCONTROL=ignorespace:erasedups
+HISTIGNORE="history"
 
 shopt -s histappend
 
@@ -45,6 +63,4 @@ showGitBranch() {
     git status 2> /dev/null | head -1 | awk '{ print $3 }'
 }
 
-CHAR='>'
-
-export PS1="${GREY}\t ${GREEN}\u${GREY}@${GREEN}\h ${RED}\w ${BLUE}\$(showGitBranch)${RESET}\n ${CHAR} "
+export PS1="${GREY}\t ${GREEN}\u${GREY}@${GREEN}\h ${RED}\w ${BLUE}\$(showGitBranch)${RESET}\n > "
