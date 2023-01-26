@@ -238,7 +238,8 @@ input type:touchpad {
 gaps inner 15
 default_border none
 
-output * bg ~/.wallpaper/STScI-01G7ETPF7DVBJAC42JR5N6EQRH.png fill
+# output * bg ~/.wallpaper/STScI-01G7ETPF7DVBJAC42JR5N6EQRH.png fill
+output * bg ~/.wallpaper/Study_03_Mac.png fill 
 
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%

@@ -26,9 +26,6 @@ shopt -s histappend
 HISTSIZE=9999999
 HISTFILESIZE=9999999
 
-# Store and reload the history immediately
-PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}; history -a; history -c; history -r;"'
-
 # use one command per line
 shopt -s cmdhist
 
@@ -59,8 +56,4 @@ extract () {
    fi
 }
 
-showGitBranch() {
-    git status 2> /dev/null | head -1 | awk '{ print $3 }'
-}
-
-export PS1="${GREY}\t ${GREEN}\u${GREY}@${GREEN}\h ${RED}\w ${BLUE}\$(showGitBranch)${RESET}\n > "
+eval "$(starship init bash)"
