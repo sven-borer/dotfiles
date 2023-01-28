@@ -229,7 +229,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 0
+    corner_radius = 2
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -291,15 +291,18 @@
 [urgency_low]
     background = "#1E1E2E"
     foreground = "#CDD6F4"
+    timeout = 2
 
 [urgency_normal]
     background = "#1E1E2E"
     foreground = "#CDD6F4"
+    timeout = 2
 
 [urgency_critical]
     background = "#F38BA8"
     foreground = "#45475A"
     frame_color = "#FAB387"
+    timeout = 10
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
@@ -336,7 +339,7 @@
 #
 # Shell-like globbing will get expanded.
 #
-# Instead of the appname filter, it's recommended to use the desktop_entry filter.
+/time# Instead of the appname filter, it's recommended to use the desktop_entry filter.
 # GLib based applications export their desktop-entry name. In comparison to the appname,
 # the desktop-entry won't get localized.
 #
