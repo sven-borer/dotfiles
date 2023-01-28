@@ -241,12 +241,12 @@ default_border none
 # output * bg ~/.wallpaper/STScI-01G7ETPF7DVBJAC42JR5N6EQRH.png fill
 output * bg ~/.wallpaper/Study_03_Mac.png fill 
 
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && dunstify "Volume: " -u low -h int:value:`pamixer --get-volume`
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && dunstify "Volume: " -u low -h int:value:`pamixer --get-volume`
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%- && dunstify "Brightness: " -u low -h int:value:`brightnessctl | grep Current | awk -F"(" '{ print $2 }' | awk -F"%" '{ print $1}'`
+bindsym XF86MonBrightnessUp exec brightnessctl set +5% && dunstify "Brightness: " -u low -h int:value:`brightnessctl | grep Current | awk -F"(" '{ print $2 }' | awk -F"%" '{ print $1}'`
 bindsym --locked XF86AudioPlay exec playerctl --player=vlc,mpv play-pause
 bindsym --locked XF86AudioNext exec playerctl --player=vlc,mpv next
 bindsym --locked XF86AudioPrev exec playerctl --player=vlc,mpv previous

@@ -33,7 +33,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 10x50
+    offset = 20x20
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -297,8 +297,8 @@
     foreground = "#CDD6F4"
 
 [urgency_critical]
-    background = "#1E1E2E"
-    foreground = "#CDD6F4"
+    background = "#F38BA8"
+    foreground = "#45475A"
     frame_color = "#FAB387"
 
 # Every section that isn't one of the above is interpreted as a rules to
