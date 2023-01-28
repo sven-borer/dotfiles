@@ -1,0 +1,8 @@
+[Unit]
+Description=Battery status 
+
+[Service]
+ExecStart=/home/sven/.scripts/battery.sh
+
+[Install]
+WantedBy=multi-user.target
