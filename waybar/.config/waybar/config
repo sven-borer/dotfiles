@@ -102,7 +102,7 @@
     "backlight": {
         "device": "intel_backlight",
         "format": " {percent}%",
-        "on-click": "[[ $(pgrep wlsunset) ]] && $(killall wlsunset) || wlsunset -l 47.5 -L 7.5"
+        "on-click": "[[ $(pgrep wlsunset) ]] && killall wlsunset || wlsunset -l 47.5 -L 7.5"
     },
 
     "battery": {
