@@ -62,7 +62,7 @@
             "critical": 90
         }
     },
-
+    
     "cpu": {
         "interval": 5,
         "format": " {usage}%",
