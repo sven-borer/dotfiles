@@ -261,6 +261,7 @@ bindsym Print exec grim ~/pictures/`date +"%Y%m%d_%H%M%S"`_grim.png
 bindsym $mod+l exec swaylock -f -i `find ~/.wallpaper -type f | shuf -n 1`
 bindsym $mod+Shift+s exec systemctl suspend
 bindsym $mod+Shift+f exec firefox-developer-edition
+bindsym $mod+Shift+w exec swww img $(ls -d $HOME/.wallpaper/* | shuf -n1) --transition-type wipe --transition-angle 30 --transition-fps 144
 
 exec --no-startup-id fcitx5 -d
 
@@ -270,7 +271,7 @@ bindgesture swipe:left workspace next
 exec wlsunset -l 47.5 -L 7.5
 
 exec swww init
-exec swww img $(ls $HOME/.wallpaper | shuf -n1) --transition-type wipe --transition-angle 30 --transition-fps 144
+exec swww img $(ls -d $HOME/.wallpaper/* | shuf -n1) --transition-type wipe --transition-angle 30 --transition-fps 144
 
 exec wl-paste -t text --watch clipman store
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
