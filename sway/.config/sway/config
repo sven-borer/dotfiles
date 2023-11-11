@@ -37,8 +37,8 @@ set $menu wofi --show drun
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 1800 'swaylock -f -i `find ~/.wallpaper -type f | shuf -n 1`' \
-         timeout 2700 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         timeout 3600 'swaylock -f -i `find ~/.wallpaper -type f | shuf -n 1`' \
+         timeout 5400 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -i `find ~/.wallpaper -type f | shuf -n 1`'
 
 for_window [app_id="vlc"] inhibit_idle fullscreen
