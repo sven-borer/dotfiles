@@ -9,18 +9,19 @@
 
     "modules-left": [
         "sway/workspaces",
-        "memory",
         "cpu",
-        "sway/window"
+        "memory",
+        "disk"
     ],
     "modules-center": [
+        "sway/window"
     ],
     "modules-right": [
         "network",
         "pulseaudio",
         "backlight",
         "battery",
-        "bluetooth",
+        // "bluetooth",
         "clock"
     ],
 
@@ -29,8 +30,8 @@
     // -------------------------------------------------------------------------
 
     "bluetooth": {
-        "format": " on",
-        "format-off": " off",
+        "format": "BLT ON",
+        "format-off": "BLT OFF",
         "tooltip-format": "{num_connections} connected",
         "tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
@@ -56,16 +57,22 @@
 
     "memory": {
         "interval": 5,
-        "format": " {}%",
+        "format": "<span color=\"#777\">MEM</span> {}%",
         "states": {
             "warning": 70,
             "critical": 90
         }
     },
+
+    "disk": {
+        "interval": 30,
+        "format": "<span color=\"#777\">DSK</span> {percentage_free}%",
+        "path": "/"
+    },
     
     "cpu": {
         "interval": 5,
-        "format": " {usage}%",
+        "format": "<span color=\"#777\">CPU</span> {usage}%",
         "states": {
           "warning": 70,
           "critical": 90
@@ -73,26 +80,25 @@
     },
 
     "sway/window": {
-        "format": " {}",
-        "max-length": 100
+        "format": "<span color=\"#777\">WND</span> {}",
+        "max-length": 50
     },
 
     "network": {
         "interval": 5,
-        "format-wifi": "{icon} {essid} ( {bandwidthUpBits}  {bandwidthDownBits})",
-        "format-ethernet": " {ifname}: {ipaddr}/{cidr}",
-        "format-disconnected": "⚠ Disconnected",
+        "format-wifi": "<span color=\"#777\">NET</span> {icon} {essid} {bandwidthTotalBytes}",
+        "format-ethernet": "<span color=\"#777\">NET</span> {ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": "<span color=\"#777\">NET</span> OFF",
         "tooltip-format": "{ifname}: {ipaddr} ({signalStrength}%)",
-        "format-icons": ["", "", ""]
+        "format-icons": []
     },
 
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}% ",
-        "format-muted": "",
+        "format": "<span color=\"#777\">AUD</span> {volume}%",
+        "format-bluetooth": "<span color=\"#777\">AUD HDS</span> {volume}%",
+        "format-muted": "<span color=\"#777\">AUD</span> OFF",
         "format-icons": {
-            "headphone": "",
-            "default": ["", ""]
+            "default": ["AUD", "AUD"]
         },
         "scroll-step": 1,
         "on-click": "pavucontrol",
@@ -101,7 +107,7 @@
 
     "backlight": {
         "device": "intel_backlight",
-        "format": " {percent}%",
+        "format": "<span color=\"#777\">BLT</span> {percent}%",
         "on-click": "[[ $(pgrep wlsunset) ]] && killall wlsunset || wlsunset -l 47.5 -L 7.5"
     },
 
@@ -111,22 +117,16 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
-        "format-discharging": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
+        "format": "<span color=\"#777\">BAT</span> {icon} {capacity:02}%",
+        "format-discharging": "<span color=\"#777\">BAT DIS</span> {icon} {capacity:02}%",
+        "format-charging": "<span color=\"#777\">BAT CHR</span> {capacity:4}%",
+        "format-icons": [],
         "tooltip": true
     },
 
     "clock": {
         "interval": 1,
-        "format": " {:%H:%M}",
-        "format-alt": " {:%d %B %Y}",
+        "format": "<span color=\"#777\">TME</span> {:%H:%M:%S}",
+        "format-alt": "<span color=\"#777\">DTE</span> {:%d.%m.%Y}",
     }
 }

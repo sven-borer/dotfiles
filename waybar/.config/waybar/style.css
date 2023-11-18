@@ -1,14 +1,11 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-family: 'Source Code Pro', 'Font Awesome 6 Pro';
-    font-weight: bold;
-    font-size: 12px;
-    margin: 2px;
+    font-family: 'Source Code Pro';
+    font-weight: bolder;
+    font-size: 11px;
 }
 
 window#waybar {
-    background-color: rgba(10, 10, 10, 0.6);
+    background-color: #111;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -18,26 +15,26 @@ window#waybar.hidden {
 }
 
 #workspaces {
-    border-radius: 10px;
+    border-radius: 1px;
     margin-bottom: 0;
-    background: #3B4252;
+    background: #666;
     transition: none;
 }
 
 #workspaces button {
     transition: none;
-    color: #646464;
+    color: #666;
     background: transparent;
     font-size: 13px;
 }
 
 #workspaces button.focused {
-    color: #ECEFF4;
+    color: #eee;
 }
 
-#workspaces,
 #network,
 #cpu,
+#disk,
 #battery,
 #backlight,
 #idle_inhibitor,
@@ -46,17 +43,18 @@ window#waybar.hidden {
 #window,
 #clock,
 #bluetooth {
-    margin: 4px;
+    margin: 3px;
     border-radius: 10px;
     transition: none;
-    padding-left: 10px;
-    padding-right: 10px;
-    background-color: rgba(10, 10, 10, 0);
-    color: #ECEFF4;
+    padding-left: 4px;
+    padding-right: 4px;
+    background-color: #111;
+    color: #eee;
 }
 
 #workspaces {
-    margin-left: 20px;
+    background-color: #111;
+    margin-left: 1px;
 }
 
 #clock {
