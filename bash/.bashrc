@@ -56,6 +56,9 @@ extract () {
    fi
 }
 
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion
+
 eval "$(starship init bash)"
 source <(kubectl completion bash)
 alias k=kubectl
