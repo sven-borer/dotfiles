@@ -1,16 +1,32 @@
-set $base00 #17191E
-set $base01 #22262d
-set $base02 #3c3f4c
-set $base03 #383a47
-set $base04 #555e70
-set $base05 #8b9cbe
-set $base06 #B2BFD9
-set $base07 #f4f4f7
-set $base08 #ff29a8
-set $base09 #85ffe0
-set $base0A #f0ffaa
-set $base0B #0badff
-set $base0C #8265ff
-set $base0D #00eaff
-set $base0E #00f6d9
-set $base0F #ff3d81
+# almost black - background
+set $base00 #0f111a
+# red
+set $base01 #FF5370
+# pink
+set $base02 #F07178
+# orange
+set $base03 #F78C6C
+# light_yellow
+set $base04 #FFE57F
+# yellow
+set $base05 #FFCB6B
+# green
+set $base06 #C3E88D
+# teal
+set $base07 #004D40
+# light_teal
+set $base08 #69F0AE
+# pale_blue
+set $base09 #B2CCD6
+# cyan
+set $base0A #89DDFF
+# blue
+set $base0B #82AAFF
+# purple
+set $base0C #C792EA
+# gray for text
+set $base0D #A6ACCD
+# medium grey
+set $base0E #3B3E4C
+# a little less dark than 00
+set $base0F #1A1B21

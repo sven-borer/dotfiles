@@ -19,7 +19,7 @@ set $term kitty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu_run | xargs swaymsg exec --
-set $menu wofi -y-40 --show drun --term=kitty
+set $menu tofi-drun | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -220,12 +220,14 @@ bar {
 include /etc/sway/config.d/*
 include colors
 
-client.focused          $base05 $base01 $base05 $base0D $base0D
-client.focused_inactive $base01 $base01 $base05 $base03 $base01
-client.unfocused        $base01 $base00 $base05 $base01 $base01
-client.urgent           $base08 $base08 $base00 $base08 $base08
-client.placeholder      $base00 $base00 $base05 $base00 $base00
-client.background       $base07
+# Basic color configuration using the Base16 variables for windows and borders.
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base0F $base00 $base0D $base0D $base0E
+client.focused_inactive $base0F $base00 $base0E $base03 $base0E
+client.unfocused        $base0F $base00 $base0E $base01 $base0E
+client.urgent           $base0F $base00 $base0E $base0E $base0E
+client.placeholder      $base0F $base00 $base0E $base00 $base0E
+client.background       $base0F
 
 input * {
     xkb_layout us
@@ -239,22 +241,24 @@ input type:touchpad {
 gaps inner 3
 default_border none
 
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && dunstify "Volume: " -u low -h int:value:`pamixer --get-volume`
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && dunstify "Volume: " -u low -h int:value:`pamixer --get-volume`
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+font pango:SourceCodePro 10
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && dunstify -h string:x-dunst-stack-tag:bltaud "Volume > `pamixer --get-volume`"
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && dunstify -h string:x-dunst-stack-tag:bltaud "Volume > `pamixer --get-volume`"
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && dunstify -h string:x-dunst-stack-tag:bltaud "Volume > `pactl get-sink-mute @DEFAULT_SINK@ | sed 's/://g' | sed 's/no/Off/g' | sed 's/yes/On/g'`"
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%- && dunstify "Brightness: " -u low -h int:value:`brightnessctl | grep Current | awk -F"(" '{ print $2 }' | awk -F"%" '{ print $1}'`
-bindsym XF86MonBrightnessUp exec brightnessctl set +5% && dunstify "Brightness: " -u low -h int:value:`brightnessctl | grep Current | awk -F"(" '{ print $2 }' | awk -F"%" '{ print $1}'`
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%- && dunstify -h string:x-dunst-stack-tag:bltaud "Backlight > `brightnessctl | grep Current | awk -F"(" '{ print $2 }' | awk -F"%" '{ print $1}'`"
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+ && dunstify -h string:x-dunst-stack-tag:bltaud "Backlight > `brightnessctl | grep Current | awk -F"(" '{ print $2 }' | awk -F"%" '{ print $1}'`" 
 bindsym --locked XF86AudioPlay exec playerctl --player=vlc,mpv play-pause
 bindsym --locked XF86AudioNext exec playerctl --player=vlc,mpv next
 bindsym --locked XF86AudioPrev exec playerctl --player=vlc,mpv previous
-bindsym XF86LaunchA exec $menu
-bindsym XF86LaunchB exec $menu
+bindsym XF86Search exec $menu
+bindsym XF86Explorer exec brightnessctl --device='tpacpi::kbd_backlight' set $([[ $(brightnessctl --device='tpacpi::kbd_backlight' info | grep Current | awk -F'(' '{print $1}' | tr -d -c 0-9) == 1 ]] && echo 0 || echo 1)
 bindsym Print exec grim ~/pictures/`date +"%Y%m%d_%H%M%S"`_grim.png
 
 bindsym $mod+l exec ~/.scripts/lock.sh
 bindsym $mod+Shift+s exec systemctl suspend
-bindsym $mod+Shift+f exec firefox
+bindsym $mod+Shift+a exec [[ $(pgrep wlsunset) ]] && killall wlsunset || wlsunset -l 47.5 -L 7.5
 
 exec --no-startup-id fcitx5 -d
 
