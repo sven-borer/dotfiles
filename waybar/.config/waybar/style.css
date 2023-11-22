@@ -1,35 +1,29 @@
 * {
     font-family: 'Source Code Pro';
-    font-weight: bolder;
-    font-size: 11px;
+    font-weight: bold;
+    font-size: 12;
 }
 
 window#waybar {
-    background-color: #111;
-    transition-property: background-color;
-    transition-duration: .5s;
+    background-color: rgba(15,17,26,1);
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
+#workspaces,
+#workspaces button,
+#workspaces button.urgent,
+#workspaces button.empty,
+#workspaces button.persistent,
+#workspaces button.hidden {
+    border: none;
+    color: #3b3e4c;
 }
-
-#workspaces {
-    border-radius: 1px;
-    margin-bottom: 0;
-    background: #666;
-    transition: none;
+#workspaces button:hover {
+    background: none;
+    border: none;
 }
-
-#workspaces button {
-    transition: none;
-    color: #666;
-    background: transparent;
-    font-size: 13px;
-}
-
-#workspaces button.focused {
-    color: #eee;
+#workspaces button.visible,
+#workspaces button.active {
+    color: #FF5370;
 }
 
 #network,
@@ -43,20 +37,6 @@ window#waybar.hidden {
 #window,
 #clock,
 #bluetooth {
-    margin: 3px;
-    border-radius: 10px;
-    transition: none;
-    padding-left: 4px;
-    padding-right: 4px;
-    background-color: #111;
-    color: #eee;
-}
-
-#workspaces {
-    background-color: #111;
-    margin-left: 1px;
-}
-
-#clock {
-    margin-right: 20px;
+    margin: 7px;
+    color: #a6accd;
 }
