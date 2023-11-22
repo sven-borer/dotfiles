@@ -1,40 +1,40 @@
 * {
     font-family: 'Source Code Pro';
-    font-weight: bolder;
+    font-weight: bold;
     font-size: 11px;
 }
 
 window {
     margin: 4px;
-    background-color: #111;
+    background-color: #0f111a;
     border-radius: 5px;
 }
 
 #input {
     margin: 4px;
-    color: #eee;
+    color: #a6accd;
     border:none;
-    background-color: #111;
+    background-color: #0f111a;
 }
 
 #inner-box {
     margin: 4px;
-    background-color: #111;
+    background-color: #0f111a;
 }
 
 #outer-box {
     margin: 4px;
-    background-color: #111;
+    background-color: #0f111a;
 }
 
 #scroll {
     margin: 4px;
-    background-color: #111;
+    background-color: #0f111a;
 }
 
 #text {
     margin: 4px;
-    background-color: #111;
+    background-color: #0f111a;
 }
 
 #entry {
@@ -44,5 +44,5 @@ window {
 #entry:selected {
     margin: 4px;
     border: none;
-    background-color: #111;
+    background-color: #0f111a;
 }
