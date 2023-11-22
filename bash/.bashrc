@@ -16,9 +16,7 @@ export HISTSIZE=100000
 export HISTFILESIZE=200000
 
 alias ls='ls --color=auto'
-alias ll='ls -la'
-
-eval "$(thefuck --alias)"
+alias ll='ls -l'
 
 # append to the history file rather than overwrite it
 shopt -s histappend

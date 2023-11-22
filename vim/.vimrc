@@ -21,7 +21,6 @@ syntax on
 
 " Color Scheme
 set termguicolors
-colorscheme catppuccin_mocha
 
 " Turn off modelines
 set modelines=0
@@ -113,7 +112,9 @@ set viminfo='100,<9999,s100
 
 call plug#begin()
  Plug 'itchyny/lightline.vim'
- Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+ Plug 'hzchirs/vim-material'
 call plug#end()
 
-let g:lightline = {'colorscheme': 'catppuccin_mocha'}
+let g:material_style='oceanic'
+set background=dark
+colorscheme vim-material
