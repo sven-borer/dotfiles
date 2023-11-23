@@ -152,11 +152,9 @@ channels = (
   { name = "#oftc"; chatnet = "OFTC"; autojoin = "No"; },
   { name = "silc"; chatnet = "SILC"; autojoin = "No"; },
   { name = "#archlinux"; chatnet = "liberachat"; autojoin = "yes"; },
-  {
-    name = "#archlinux-offtopic";
-    chatnet = "liberachat";
-    autojoin = "yes";
-  }
+  { name = "#archlinux-offtopic"; chatnet = "liberachat"; autojoin = "yes"; }
+  { name = "#mpv"; chatnet = "liberachat"; autojoin = "yes"; }
+  { name = "#sway"; chatnet = "liberachat"; autojoin = "yes"; }
 );
 
 aliases = {
