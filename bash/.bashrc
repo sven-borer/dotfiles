@@ -2,36 +2,15 @@
 
 [[ $- != *i* ]] && return
 
-BLUE=$'\[\e[34m\]'
-RED=$'\[\e[31m\]'
-YELLOW=$'\[\e[33m\]'
-GREEN=$'\[\e[32m\]'
-GREY=$'\[\e[37m\]'
-RESET=$'\[\e[0m\]'
-
 export EDITOR=vim
 export PAGER=less
-export HISTCONTROL=ignoreboth:erasedups
-export HISTSIZE=100000
-export HISTFILESIZE=200000
+export HISTCONTROL="erasedups:ignorespace"
+
+shopt -s histappend
 
 alias ls='ls --color=auto'
-alias ll='ls -l'
-
-# append to the history file rather than overwrite it
-shopt -s histappend
-
-HISTSIZE=9999999
-HISTFILESIZE=9999999
-
-# use one command per line
-shopt -s cmdhist
-
-HISTTIMEFORMAT="%h %d %H:%M:%S "
-HISTCONTROL=ignorespace:erasedups
-HISTIGNORE="history"
-
-shopt -s histappend
+alias ll='ls -la'
+alias k=kubectl
 
 extract () {
    if [ -f $1 ] ; then
@@ -59,5 +38,4 @@ extract () {
 
 eval "$(starship init bash)"
 source <(kubectl completion bash)
-alias k=kubectl
 complete -o default -F __start_kubectl k
