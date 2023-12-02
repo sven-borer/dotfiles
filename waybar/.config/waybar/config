@@ -46,24 +46,20 @@
         }
     },
 
+    "cpu": {
+        "interval": 5,
+        "format": "<span color='#3b3e4c' size='small'>CPU</span> {usage}%"
+    },
+
     "memory": {
         "interval": 5,
-        "format": "<span color='#3b3e4c' size='small'>MEM</span> {}%",
-        "states": {
-            "warning": 70,
-            "critical": 90
-        }
+        "format": "<span color='#3b3e4c' size='small'>MEM</span> {}%"
     },
 
     "disk": {
         "interval": 120,
-        "format": "<span color='#3b3e4c' size='small'>DSK</span> {percentage_free}%",
+        "format": "<span color='#3b3e4c' size='small'>DSK</span> {percentage_used}%",
         "path": "/"
-    },
-    
-    "cpu": {
-        "interval": 5,
-        "format": "<span color='#3b3e4c' size='small'>CPU</span> {usage}%"
     },
 
     "sway/window": {
@@ -91,14 +87,16 @@
     "backlight": {
         "device": "intel_backlight",
         "format": "<span color='#3b3e4c' size='small'>BLT</span> {percent}%",
-        "on-click": "[[ $(pgrep wlsunset) ]] && killall wlsunset || wlsunset -l 47.5 -L 7.5"
+        "on-click": "[[ $(pgrep wlsunset) ]] && killall wlsunset || wlsunset -l 47.5 -L 7.5",
+        "tooltip": false
     },
 
     "battery": {
-        "interval": 60,
+        "interval": 10,
         "format": "<span color='#3b3e4c' size='small'>BAT</span> {icon} {capacity:02}%",
-        "format-discharging": "<span color='#3b3e4c' size='small'>BAT DIS</span> {icon} {capacity:02}%",
-        "format-charging": "<span color='#3b3e4c' size='small'>BAT CHR</span> {capacity:4}%",
+        "format-discharging": "<span color='#3b3e4c' size='small'>BAT DIS</span> {icon} {capacity:02}% {power:2.0f}W",
+        "format-charging": "<span color='#3b3e4c' size='small'>BAT CHR</span> {capacity:4}% {power:2.0f}W",
+        "tooltip-format": "Power: {power:2.0f}W",
         "tooltip": true
     },
 
