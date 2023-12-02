@@ -243,29 +243,22 @@ default_border none
 
 font pango:SourceCodePro 10
 
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && dunstify -h string:x-dunst-stack-tag:bltaud "Volume > `pactl get-sink-mute @DEFAULT_SINK@ | sed 's/://g' | sed 's/no/Off/g' | sed 's/yes/On/g'`"
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && dunstify -h string:x-dunst-stack-tag:bltaud "Volume > `pamixer --get-volume`"
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && dunstify -h string:x-dunst-stack-tag:bltaud "Volume > `pamixer --get-volume`"
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && dunstify -h string:x-dunst-stack-tag:bltaud "Volume > `pactl get-sink-mute @DEFAULT_SINK@ | sed 's/://g' | sed 's/no/Off/g' | sed 's/yes/On/g'`"
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle && brightnessctl --device='platform::micmute' set $([[ $(pactl get-source-mute @DEFAULT_SOURCE@ | awk -F' ' '{ print $2 }') == 'yes' ]] && echo 1 || echo 0)
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%- && dunstify -h string:x-dunst-stack-tag:bltaud "Backlight > `brightnessctl | grep Current | awk -F"(" '{ print $2 }' | awk -F"%" '{ print $1}'`"
 bindsym XF86MonBrightnessUp exec brightnessctl set 5%+ && dunstify -h string:x-dunst-stack-tag:bltaud "Backlight > `brightnessctl | grep Current | awk -F"(" '{ print $2 }' | awk -F"%" '{ print $1}'`" 
-bindsym --locked XF86AudioPlay exec playerctl --player=vlc,mpv play-pause
-bindsym --locked XF86AudioNext exec playerctl --player=vlc,mpv next
-bindsym --locked XF86AudioPrev exec playerctl --player=vlc,mpv previous
-bindsym XF86Search exec $menu
-bindsym XF86Explorer exec brightnessctl --device='tpacpi::kbd_backlight' set $([[ $(brightnessctl --device='tpacpi::kbd_backlight' info | grep Current | awk -F'(' '{print $1}' | tr -d -c 0-9) == 1 ]] && echo 0 || echo 1)
+bindsym XF86Display exec [[ $(pgrep wlsunset) ]] && killall wlsunset  || wlsunset -l 47.5 -L 7.5 -g 0.9
 bindsym Print exec grim ~/pictures/`date +"%Y%m%d_%H%M%S"`_grim.png
+bindsym XF86SelectiveScreenshot exec $(slurp | grim -g - ~/pictures/`date +"%Y%m%d_%H%M%S"`_grim.png)
 
 bindsym $mod+l exec ~/.scripts/lock.sh
 bindsym $mod+Shift+s exec systemctl suspend
-bindsym $mod+Shift+a exec [[ $(pgrep wlsunset) ]] && killall wlsunset || wlsunset -l 47.5 -L 7.5
 
 exec --no-startup-id fcitx5 -d
 
-bindgesture swipe:right workspace prev
-bindgesture swipe:left workspace next
-
-exec wlsunset -l 47.5 -L 7.5
+exec wlsunset -l 47.5 -L 7.5 -g 0.9
 
 exec swww init
 exec swww img ~/.wallpaper/1.jpg --transition-type wipe --transition-angle 30 --transition-fps 144 --transition-duration 1
